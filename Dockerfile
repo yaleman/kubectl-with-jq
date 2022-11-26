@@ -1,9 +1,12 @@
 FROM registry.suse.com/bci/bci-base:15.4 AS build
 
-LABEL repository="https://github.com/yaleman/kubectl-with-jq"
+ARG GITHUB_SHA="${GITHUB_SHA}"
 
-ARG KUBERNETES_RELEASE=v1.21.3
+LABEL com.repository="https://github.com/yaleman/kubectl-with-jq"
+LABEL com.git-commit="${GITHUB_SHA}"
+
 WORKDIR /
+
 RUN set -x \
  && zypper -n install curl jq \
  && if [ "$(uname -m)" == "aarch64" ]; then \
