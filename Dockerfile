@@ -6,7 +6,11 @@ ARG KUBERNETES_RELEASE=v1.21.3
 WORKDIR /
 RUN set -x \
  && zypper -n install curl jq \
- && if [ "$(uname -m)" == "aarch64" ]; then ARCH="arm64"; else ARCH="x86_64"; fi \
+ && if [ "$(uname -m)" == "aarch64" ]; then \
+    ARCH="arm64"; \
+    else \
+    ARCH="amd64"; \
+    fi \
  && curl -fsSLO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/${ARCH}/kubectl" \
  && chmod +x kubectl \
  && useradd -u 1000 -U -m kubectl
