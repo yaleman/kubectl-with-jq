@@ -28,9 +28,7 @@ COPY --from=build /lib64/libc.so.6 /lib64/libc.so.6
 COPY --from=build /lib64/libtinfo.so.6 /lib64/libtinfo.so.6
 COPY --from=build /usr/lib64/libjq.so.1 /usr/lib64/libjq.so.1
 COPY --from=build /usr/lib64/libonig.so.4 /usr/lib64/libonig.so.4
-
 COPY --from=build /lib/ld-linux-* /lib/
-# COPY --from=build /lib/ld-linux-aarch64.so.1 /lib/ld-linux-aarch64.so.1
 
 COPY --from=build /usr/bin/jq /bin/jq
 COPY --from=build /usr/bin/sh /bin/sh
